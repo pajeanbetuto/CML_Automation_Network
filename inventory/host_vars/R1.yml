@@ -39,13 +39,17 @@ dhcp:
       network: 192.168.2.0
       mask: 255.255.255.0
       default_router: 192.168.2.3
-     # dns_server: check group var
+      dns_servers:
+        - 8.8.8.8
+        - 8.8.4.4
 
     - name: LAN2
       network: 192.168.3.0
       mask: 255.255.255.0
       default_router: 192.168.3.3
-     # dns_server:  check group var
+      dns_servers:
+        - 8.8.8.8
+        - 8.8.4.4
 
 ospf:
   process_id: 1

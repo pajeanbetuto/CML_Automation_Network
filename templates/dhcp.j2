@@ -10,5 +10,5 @@ ip dhcp excluded-address {{ ip.start }} {{ ip.end }}
 ip dhcp pool {{pool.name}}
 network {{pool.network}} {{pool.mask}}
 default-router {{pool.default_router}}
-dns-server {{pool.dns_server | join(" ")}}
+dns-server {{pool.dns_servers | join(" ")}}
 {% endfor %}
