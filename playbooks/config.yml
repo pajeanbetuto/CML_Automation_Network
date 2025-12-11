@@ -8,6 +8,9 @@
         backup_options:
           filename: "{{ inventory_hostname }}_before.cfg"
           dir_path: "../files/"
+    - name: configure interfaces
+      cisco.ios.ios_config:
+        src: "../templates/interfaces.j2"
     - name: ospf configuration
       cisco.ios.ios_config:
         src: "../templates/ospf.j2"
