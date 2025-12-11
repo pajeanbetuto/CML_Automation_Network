@@ -1,0 +1,12 @@
+{% for iface in interfaces %}
+interface {{ iface.name }}
+ip address {{ iface.ip_address }} {{ iface.mask }}
+description {{ iface.description }}
+{% if iface.active or iface.description=="mgt_interface" %}
+no sh
+{% else %}
+sh
+{% endif %}
+{% endfor %}
+
+

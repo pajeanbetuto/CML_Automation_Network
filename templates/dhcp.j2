@@ -1,0 +1,14 @@
+{% for ip in dhcp.excluded_ip %}
+ip dhcp excluded-address {{ ip }}
+{% endfor %}
+
+{% for ip in dhcp.exclude_range %}
+ip dhcp excluded-address {{ ip.start }} {{ ip.end }}
+{% endfor %}
+
+{% for pool in dhcp.pools %}
+ip dhcp pool {{pool.name}}
+network {{pool.network}} {{pool.mask}}
+default-router {{pool.default_router}}
+dns-server {{pool.dns_server | join(" ")}}
+{% endfor %}

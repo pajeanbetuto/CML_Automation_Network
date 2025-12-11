@@ -1,0 +1,17 @@
+ansible_network_os: cisco.ios.ios
+ansible_connection: network_cli
+ansible_become: yes
+ansible_become_method: enable
+ansible_become_password: C0nTroll3r124#@
+ansible_user: controler
+ansible_password: C0nTroll3r124#@
+
+dns_servers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+  - 2.pool.ntp.org
+  - 3.pool.ntp.org

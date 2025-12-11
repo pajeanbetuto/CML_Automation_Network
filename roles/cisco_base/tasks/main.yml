@@ -1,0 +1,17 @@
+---
+- name: Configure hostname
+  cisco.ios.ios_config:
+    lines:
+      - hostname {{ inventory_hostname }}
+
+- name: Configure DNS
+  cisco.ios.ios_config:
+    lines:
+      - ip name-server {{ dns_servers | join(' ') }}
+      - ip domain-name lab.local
+
+- name: Configure NTP
+  cisco.ios.ios_config:
+    lines:
+      - ntp server {{ item }}
+  loop: "{{ ntp_servers }}"

@@ -1,0 +1,10 @@
+vrrp:
+  group:
+    - id: 1
+      virtual_ip: 192.168.2.3
+      priority: 110
+      preempt: true
+      authentication:
+        mode: md5
+        key: MySecretKey123@
+

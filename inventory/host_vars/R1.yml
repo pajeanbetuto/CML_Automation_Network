@@ -1,0 +1,68 @@
+interfaces:
+  - name: e0/0
+    ip_address: 192.168.1.3
+    mask: 255.255.255.0
+    description: mgt_interface
+    active: true
+  - name: e0/1
+    ip_address: 192.168.0.1
+    mask: 255.255.255.248
+    description: to_backbone_switch
+    active: true
+  - name: e0/2
+    ip_address: 192.168.0.9
+    mask: 255.255.255.252
+    description: to_R3
+    active: true
+  - name: e0/3
+    ip_address: 192.168.0.13
+    mask: 255.255.255.252
+    description: to_R2
+    active: true
+  - name: e1/0
+    ip_address: 192.168.2.1
+    mask: 255.255.255.0
+    description: LAN1
+    active: true
+
+dhcp:
+  excluded_ip:
+    - 192.168.3.1
+    - 192.168.2.1
+  exclude_range:
+    - start: 192.168.2.2
+      end: 192.168.2.9
+    - start: 192.168.3.2
+      end: 192.168.3.9
+  pools:
+    - name: LAN1
+      network: 192.168.2.0
+      mask: 255.255.255.0
+      default_router: 192.168.2.3
+     # dns_server: check group var
+
+    - name: LAN2
+      network: 192.168.3.0
+      mask: 255.255.255.0
+      default_router: 192.168.3.3
+     # dns_server:  check group var
+
+ospf:
+  process_id: 1
+  router_id: 1.1.1.1
+  passive_interfaces:
+    - e0/0
+    - e1/0
+  area:
+    - area_id: 0
+      networks:
+        - ip: 192.168.1.0
+          mask: 0.0.0.255
+        - ip: 192.168.0.0
+          mask: 0.0.0.7
+        - ip: 192.168.0.8
+          mask: 0.0.0.3
+        - ip: 192.168.0.12
+          mask: 0.0.0.3
+        - ip: 192.168.2.0
+          mask: 0.0.0.255

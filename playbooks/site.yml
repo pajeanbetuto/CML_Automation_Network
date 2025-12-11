@@ -1,0 +1,7 @@
+---
+- name: Configure all network devices
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Include device-specific playbooks
+      include: "{{ ansible_network_os }}.yml"

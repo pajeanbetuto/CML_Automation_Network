@@ -1,0 +1,21 @@
+---
+- name: Configure loopback interface
+  cisco.ios.ios_interfaces:
+    config:
+      - name: Loopback0
+        description: "{{ interfaces.loopback0.description }}"
+        enabled: true
+
+- name: Configure loopback IP
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: Loopback0
+        ipv4:
+          - address: "{{ loopback_ip }}"
+
+- name: Configure OSPF
+  cisco.ios.ios_config:
+    lines:
+      - router ospf {{ ospf_process_id }}
+      - router-id {{ router_id }}
+      - network {{ loopback_ip | ipaddr('network') }} {{ loopback_ip | ipaddr('netmask') }} area {{ ospf_area }}

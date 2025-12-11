@@ -1,0 +1,4 @@
+# Encrypted passwords (use ansible-vault encrypt vault.yml)
+vault_switch_password: changeme
+vault_router_password: changeme
+vault_enable_password: changeme

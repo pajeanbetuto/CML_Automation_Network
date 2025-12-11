@@ -1,0 +1,5 @@
+
+{% for iface in dhcp_relay_agent %}
+interface {{ iface.interface }}
+ip helper-address {{ iface.ip_helper }}
+{% endfor %}
