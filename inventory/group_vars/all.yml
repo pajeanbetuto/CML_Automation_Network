@@ -6,8 +6,6 @@ ansible_become_password: C0nTroll3r124#@
 ansible_user: controler
 ansible_password: C0nTroll3r124#@
 
-
-
 ntp_servers:
   - 0.pool.ntp.org
   - 1.pool.ntp.org
