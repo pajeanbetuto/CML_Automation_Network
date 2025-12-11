@@ -11,7 +11,7 @@
           - ntp server {{ ntp_servers[0] }}
         save_when: modified
 
-    - name: Configure interfaces (routers)
+    - name: Configure interfaces ( routers )
       cisco.ios.ios_interfaces:
         config:
           - name: Loopback0
