@@ -4,13 +4,3 @@ interfaces:
     mask: 255.255.255.0
     description: mgt_interface
     active: true
-
-vlan:
-  - name: vlan10
-    id: 10
-    interfaces:
-      - e1/0
-  - name: vlan20
-    id: 20
-    interfaces:
-      - e0/3

@@ -1,6 +1,7 @@
 vrrp:
   group:
     - id: 1
+      interface: e1/0
       virtual_ip: 192.168.3.3
       priority: 110
       preempt: true

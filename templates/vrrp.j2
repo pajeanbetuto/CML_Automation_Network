@@ -1,0 +1,9 @@
+{% for group in vrrp.group %}
+interface {{ group.interface }}
+ vrrp {{group.id}} ip {{group.virtual_ip}}
+ vrrp {{group.id}} priority {{group.priority}}
+{% if group.preempt %}
+ vrrp {{group.id}} preempt
+{%endif%}
+ vrrp {{group.id}}  authentication {{group.authentication.mode}}  key-string {{group.authentication.key}}
+{% endfor %}
