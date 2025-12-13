@@ -5,5 +5,4 @@ interface {{ group.interface }}
 {% if group.preempt %}
  vrrp {{group.id}} preempt
 {%endif%}
- vrrp {{group.id}}  authentication {{group.authentication.mode}}  key-string {{group.authentication.key}}
 {% endfor %}
