@@ -22,4 +22,13 @@
       cisco.ios.ios_config:
         src: "../templates/helper_address.j2"
       when: inventory_hostname != "R1"
+    - name: vrrp configuration
+      cisco.ios.ios_config:
+        src: "../templates/vrrp.j2"
+    - name: backup Cisco configuration
+      cisco.ios.ios_config:
+        backup: yes
+        backup_options:
+          filename: "{{ inventory_hostname }}_after.cfg"
+          dir_path: "./files/"
 
