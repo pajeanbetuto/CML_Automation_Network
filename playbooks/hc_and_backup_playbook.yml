@@ -1,0 +1,14 @@
+- name: hc and backup cisco nodes
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: HC
+      cisco.ios.ios_command:
+        commands: "{{item}}"
+      loop: "{{lookup('file', 'hc.txt').split('\n')}}"
+    - name: backup configuration with ios_config and time
+      cisco.ios.ios_config:
+        backup: yes
+        backup_options:
+          filename: "{{inventory_hostname}}_Backup_{{now('%Y-%m-%d_%H:%M:%S')}}.txt"
+          dir_path: "./files"

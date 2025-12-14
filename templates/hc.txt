@@ -1,0 +1,7 @@
+sh run
+sh vrrp
+sh ip int br
+sh int stat
+sh ip ospf neigh
+sh ip ospf databse
+sh ip dhcp pool
